@@ -1,4 +1,4 @@
-def count_most_voted(lists, voters):
+def count_most_voted(lists):
     vote_set = set(lists)
     most_vote = ''
 
@@ -27,7 +27,7 @@ print("*** Election ***")
 voters = int(input("Enter a number of voter(s) : "))
 lists = input().split()
 
-if count_most_voted(lists, voters) != None:
-    print(count_most_voted(lists, voters))
+if count_most_voted(lists) != None:
+    print(count_most_voted(lists))
 else:
     print("*** No Candidate Wins ***")
