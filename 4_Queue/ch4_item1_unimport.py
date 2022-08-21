@@ -51,7 +51,6 @@ if __name__ == '__main__':
     if q.is_empty() and len(temp) == 0:
         print('Empty :', 'Empty')
     elif len(temp) == 0:
-        temp = 'Empty'
         print('Empty :', ', '.join(q.items))
     else:
         print(''.join(temp), ':', end='') if len(
