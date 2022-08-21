@@ -1,9 +1,8 @@
-# '''
-# หลังจากกฤษฎาล้างจานเสร็จ ก็ได้มาเล่นเกมส์ที่กำลังเป็นที่นิยมทั่วโลกในตอนนี้   Microsoft Flight Simulator ?  Fall Guys ?  Valorant ?  "ผิดทั้งหมด!"
-# กฤษฎาได้กล่าวไว้  เกมที่กำลังเป็นที่นิยมคือ Color Crush ต่างหาก   โดยเกมนี้จะเป็นการนำสีมาเรียงต่อกัน โดยสีจะหายไปก็ต่อเมื่อมีการเรียงสีเหมือนกันครบ 3 อัน
-# เช่น  A B B B A  -> A A เนื่องจาก B เรียงติดกัน 3 ตัวทำให้ระเบิดหายไปโดยที่สีจะมีทั้งหมด 26 สี และจะถูกแทนด้วย A - Z  โดยถ้าหากมีการระเบิดตั้งแต่ 2 ครั้งขึ้นไปจะแสดง Combo ขึ้นมา
-
-# โดยเมื่อการระเบิดสิ้นสุดลงให้แสดงจำนวนและลำดับของสีที่เหลือจากขวาไปซ้าย'''
+'''
+หลังจากกฤษฎาล้างจานเสร็จ ก็ได้มาเล่นเกมส์ที่กำลังเป็นที่นิยมทั่วโลกในตอนนี้   Microsoft Flight Simulator ?  Fall Guys ?  Valorant ?  "ผิดทั้งหมด!"
+กฤษฎาได้กล่าวไว้  เกมที่กำลังเป็นที่นิยมคือ Color Crush ต่างหาก   โดยเกมนี้จะเป็นการนำสีมาเรียงต่อกัน โดยสีจะหายไปก็ต่อเมื่อมีการเรียงสีเหมือนกันครบ 3 อัน
+เช่น  A B B B A  -> A A เนื่องจาก B เรียงติดกัน 3 ตัวทำให้ระเบิดหายไปโดยที่สีจะมีทั้งหมด 26 สี และจะถูกแทนด้วย A - Z  โดยถ้าหากมีการระเบิดตั้งแต่ 2 ครั้งขึ้นไปจะแสดง Combo ขึ้นมา
+โดยเมื่อการระเบิดสิ้นสุดลงให้แสดงจำนวนและลำดับของสีที่เหลือจากขวาไปซ้าย'''
 
 
 class Stack:
@@ -30,7 +29,7 @@ class Stack:
         return len(self.items)
 
 
-def colorCrush(s: Stack, lst, crush=None):
+def color_crush(s: Stack, lst, crush=None):
     if crush == None:
         crush = 0
 
@@ -43,15 +42,12 @@ def colorCrush(s: Stack, lst, crush=None):
     while i >= 2:
         if lst[i-2:i+1] == list(lst[i]*3):
             crush += 1
-            if i > 2:
-                i -= 3
-            else:
-                i -= 2
+            i = i-3 if i > 2 else i-2
         else:
             s.push(lst[i])
             i -= 1
 
-    if i >= 0 and s.is_empty() == False:
+    if i >= 0 and not s.is_empty():
         for i in range(i, 0, -1):
             s.push(lst[i])
         s.push(lst[0])
@@ -59,9 +55,7 @@ def colorCrush(s: Stack, lst, crush=None):
         if s.size() >= 3:
             for j in range(s.size()-1, 0, -1):
                 if s.items[j-2:j+1] == list(s.items[j]*3):
-                    return colorCrush(Stack(), list(''.join(s.items)[::-1]), crush)
-    # else:
-    #     s.push(lst[0])
+                    return color_crush(Stack(), list(''.join(s.items)[::-1]), crush)
 
     return s, crush
 
@@ -69,9 +63,9 @@ def colorCrush(s: Stack, lst, crush=None):
 inp = input('Enter Input : ').split()
 S = Stack()
 
-S, crush = colorCrush(S, inp)
+S, crush = color_crush(S, inp)
 print(S.size())
-print("".join(S.items)) if S.is_empty() == False else print("Empty")
+print("".join(S.items)) if not S.is_empty() else print("Empty")
 
 if crush > 1:
     print(f'Combo : {crush} ! ! !')
