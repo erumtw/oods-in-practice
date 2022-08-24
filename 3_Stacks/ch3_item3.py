@@ -60,6 +60,33 @@ def color_crush(s: Stack, lst, crush=None):
     return s, crush
 
 
+def color_crush2(colors: Stack):
+    temp_s = Stack()
+    c = 0
+
+    while not colors.is_empty():
+        temp_s.push(colors.pop())
+        if (not temp_s.is_empty()) and (not colors.is_empty()):
+            if temp_s.peek() == colors.peek():
+                c += 1
+                if c == 2:
+                    for i in range(2):
+                        temp_s.pop()
+                    colors.pop()
+                    c = 0
+            else:
+                c = 0
+
+    print(''.join(temp_s.items))
+
+    if temp_s.size() >= 3:
+        for j in range(temp_s.size()-1, 0, -1):
+            if temp_s.items[j-2:j+1] == list(temp_s.items[j]*3):
+                return color_crush(Stack(list(''.join(temp_s.items)[::-1])))
+
+    return ''.join(temp_s.items)
+
+
 inp = input('Enter Input : ').split()
 S = Stack()
 
