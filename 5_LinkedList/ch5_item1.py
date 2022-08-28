@@ -3,6 +3,7 @@ class Node:
         self.value = value
         self.next = None if next == None else next
 
+
 class LinkedList:
     def __init__(self, head=None):
         if head == None:
@@ -12,14 +13,14 @@ class LinkedList:
             # head
             self.head = head
             self.size = 1
-            
+
             t = self.head
             # tail
             while t.next != None:
                 t = t.next
                 self.size += 1
             self.tail = t
-            
+
     def __str__(self):
         if self.isEmpty():
             return "Empty"
@@ -38,16 +39,16 @@ class LinkedList:
         else:
             p = Node(item)
             self.tail.next = p
-            self.tail = p 
+            self.tail = p
         self.size += 1
-        
+
     def addHead(self, item):
         if self.head == self.tail == None:
             self.head = self.tail = Node(item)
         else:
             self.head = Node(item, self.head)
         self.size += 1
-            
+
     def search(self, item):
         if self.head == self.tail == None:
             return 'Not Found'
@@ -56,7 +57,6 @@ class LinkedList:
             while finder.value != item and finder.next != None:
                 finder = finder.next
             return 'Found' if finder.value == item else 'Not Found'
-            
 
     def index(self, item):
         if self.head == None:
@@ -95,9 +95,8 @@ class LinkedList:
             prev_finder.next = finder.next
             self.size -= 1
         return 'Success'
-            
-            
-        
+
+
 L = LinkedList()
 inp = input('Enter Input : ').split(',')
 for i in inp:
@@ -114,5 +113,6 @@ for i in inp:
     elif i[:2] == "PO":
         before = "{}".format(L)
         k = L.pop(int(i[3:]))
-        print(("{0} | {1}-> {2}".format(k, before, L)) if k == "Success" else ("{0} | {1}".format(k, L)))
+        print(("{0} | {1}-> {2}".format(k, before, L)) if k ==
+              "Success" else ("{0} | {1}".format(k, L)))
 print("Linked List :", L)
