@@ -56,10 +56,10 @@ class LinkedList:
         current.prev.next = current.prev = newNode
 
     def get_size(self):
-        t = self.head.next
         if self.is_empty():
             return 0
 
+        t = self.head.next
         size = 1
         while t.next != self.tail:
             size += 1
