@@ -2,8 +2,8 @@
 
 
 class Node:
-    def __init__(self, data: str, next=None, prev=None) -> None:
-        self.data = data
+    def __init__(self, data=None, next=None, prev=None) -> None:
+        self.data = data if data != None else None
         self.next = next if next != None else None
         self.prev = prev if prev != None else None
 
@@ -11,8 +11,8 @@ class Node:
 class LinkedList:
     def __init__(self) -> None:
         # dummy head & tail with a linear linked list
-        self.head = Node(None)
-        self.tail = Node(None, None, self.head)
+        self.head = Node()
+        self.tail = Node(prev=self.head)
         self.head.next = self.tail
 
     def __str__(self) -> str:
