@@ -57,7 +57,7 @@ def parenthesis_matching(items):
     return error_case, open_stack
 
 
-def is_mathch(opens, close):
+def is_mathch(opens, close): 
     return opens + close == '()' or \
         opens + close == '[]' or \
         opens + close == '{}'

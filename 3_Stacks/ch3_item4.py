@@ -44,12 +44,12 @@ def infix2postfix(exp):
                 s.push(c)
             elif s.peek() in '()' or op[c] > op[s.peek()]:
                 s.push(c)
-            elif op[c] <= op[s.peek()]:
+            elif op[c] < op[s.peek()]:
                 for i in range(s.size()):
                     if s.peek() == '(':
                         break
-                    if c in '*/' and s.peek() in '+-':
-                        break
+                    # if c in '*/' and s.peek() in '+-':
+                    #     break
                     output.append(s.pop())
                 s.push(c)
 

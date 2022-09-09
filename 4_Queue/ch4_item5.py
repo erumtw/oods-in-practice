@@ -2,10 +2,7 @@
 
 class Stack:
     def __init__(self,  items=None):
-        if items == None:
-            self.items = []
-        else:
-            self.items = items
+        self.items = [] if items == None else items
 
     def push(self, i):
         self.items.append(i)
