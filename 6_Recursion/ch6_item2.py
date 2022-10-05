@@ -7,21 +7,20 @@ def ReverseSort(arr, i, j, isSorted):
     if i <= n-1:
         if isSorted == n-1:
             return arr
+        
         if j == n-1:
             isSorted = 0
             ReverseSort(arr, 0, 0, isSorted) 
-        elif arr[i] >= arr[i+1]:
+        elif arr[i] >= arr[i+1]: # check if sorted
             isSorted += 1
             return ReverseSort(arr, i+1, i+1, isSorted)
         else:
             if arr[j] < arr[j+1]:
                 # swap
                 arr[j], arr[j+1] = arr[j+1], arr[j] 
-                isSorted = 0
-                return ReverseSort(arr, j+1, j+1, isSorted)
+                return ReverseSort(arr, j+1, j+1, 0)
             elif arr[j] > arr[j+1]:
-                isSorted = 0
-                return ReverseSort(arr, 0, 0, isSorted)
+                return ReverseSort(arr, 0, 0, 0)
     else:
         return
 

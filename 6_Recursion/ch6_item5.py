@@ -16,5 +16,4 @@ def staircase(n, i=None):
             return staircase(n, i+1)
         
     
-
 staircase(int(input("Enter Input : ")))

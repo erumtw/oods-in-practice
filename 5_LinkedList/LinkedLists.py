@@ -85,6 +85,20 @@ class LinkedList:
         
         return popNode.data
             
+    def index(self, data):
+        t = self.head.next       
+        index = 0 
+        while t.data != data and t.next != self.tail:
+            index += 1
+            t = t.next
+        return index if t.data == data else -1
+            
+    def search(self, data):
+        t = self.head.next       
+        while t.data != data and t.next != self.tail:
+            t = t.next
+        return "Found" if t.data == data else "Not Found"
+    
 if __name__ == '__main__':
     arr = ['a','b','c','d']
     LL = LinkedList(arr)
@@ -95,5 +109,9 @@ if __name__ == '__main__':
     
     LL.popleft()
     print(LL, LL.size())
+    print(LL.index('e'))
     LL.popright()
     print(LL, LL.size())
+    print(LL.search('b'), 'b')
+    print(LL.search('a'), 'a')
+    

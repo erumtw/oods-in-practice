@@ -3,7 +3,7 @@
 #     if num <= 1:
 #         return num
 #     else:
-#         return fibo(num-2) + fibo(num-1) 
+#         return fibo(num-1) + fibo(num-2) 
 
 def fibo(num, memo):
     # x3 = x2 + x1

@@ -102,7 +102,7 @@ class LinkedList:
 
         return t2, i if t2.data == data else 'Not Found!', '-1'
 
-    def set_next(self, index1, index2):
+    def set_next(self, index1, index2): # set เสร็จตัดหลังทิ้งหมด เอาเทลมาต่อเลย
         error = 0
         loop = False
 
